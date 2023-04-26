@@ -69,6 +69,12 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+nvim_lsp.elixirls.setup {
+  cmd = { "C:/Users/proca/AppData/Local/nvim-data/mason/packages/elixir-ls/language_server.bat" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 nvim_lsp.volar.setup {
   filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 }
@@ -85,6 +91,11 @@ nvim_lsp.flow.setup {
 
 nvim_lsp.pyright.setup {
   on_attach = require("lsp-format").on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.dartls.setup {
+  on_attach = on_attach,
   capabilities = capabilities
 }
 
